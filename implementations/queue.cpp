@@ -109,8 +109,9 @@ int main() {
 }
 
 /**
- * size_t is frequently used to describe sizes of data structure
+ * size_t is a data type used to describe sizes of data structures and
  * is capable of representing the size of the largest possible object
+ * if we used int we would have to handle cases of overflow
  * 
  * const keyword is explcitly used for parameters to ensure that the 
  * class methods cannot modify the value of the data
