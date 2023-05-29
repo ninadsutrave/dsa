@@ -17,12 +17,13 @@ double exp(double base, int power) {
         power = -power;
     }
 
-    double result = exp(base, power/2);
-
-    if(power&1) {
-        result = result*result*base;
-    } else {
-        result = result*result;
+    double result = 1;
+    while (power > 0) {
+        if (power&1) {
+            result = result*base;
+        }
+        base = base*base;
+        power = power>>1;
     }
 
     return result;
@@ -33,6 +34,6 @@ int main() {
 
     cout<<exp(1,0)<<"\n";
     cout<<exp(8,-5)<<"\n";
-    cout<<exp(0,50)<<"\n";
+    cout<<exp(0,0)<<"\n";
 
 }
