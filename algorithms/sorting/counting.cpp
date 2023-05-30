@@ -1,4 +1,8 @@
 /*
+ * Time Complexity: O(n + k)
+ * n: number of elements
+ * k: range of input values
+ * 
  * Limitations:
  * Counting sort has a limited range of applicability. 
  * It can only be used to sort non-negative integers or elements that can be mapped to non-negative integers.
