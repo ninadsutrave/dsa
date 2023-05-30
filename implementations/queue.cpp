@@ -126,4 +126,7 @@ int main() {
  * 
  * LinkedList is preferred over array because:
  *  -> Arrays may need frequent resizing which is costly
+ * 
+ * But if maximum size is known before hand, 
+ * array will be preferred because there won't be extra
 */

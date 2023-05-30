@@ -1,18 +1,28 @@
 #include <iostream>
 #include <vector>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
+int getRandomPivot(int low, int high) {
+    srand(time(NULL));
+    return low + rand() % (high - low + 1);
+}
+
 int partition(vector<int>& nums, int low, int high) {
-    int pivot = nums[high]; 
+    int pivotIndex = getRandomPivot(low, high);
+    int pivot = nums[pivotIndex]; 
     int i = low - 1;
 
-    for (int j = low; j <= high - 1; j++) {
+    swap(nums[pivotIndex], nums[high]);
+    for (int j = low; j<high; ++j) {
         if (nums[j] <= pivot) {
             ++i;
             swap(nums[i], nums[j]);
         }
     }
-    swap(nums[i + 1], nums[high]);
+    swap(nums[i + 1], nums[pivotIndex]);
+
     return i + 1; 
 }
 
