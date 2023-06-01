@@ -7,10 +7,9 @@ void addEdge(vector <pair<int, int>> adj[], int u, int v, int wt) {
     adj[u].push_back(make_pair(v, wt));
 }
 
-void dijkstras(vector<pair<int,int>> adj[], int V, int src) {
+vector<int> dijkstras(vector<pair<int,int>> adj[], int V, int src) {
 
     priority_queue<pair<int,int>> pq;
-    vector<bool> visited(V, false);
     vector<int> dist(V, INT_MAX);
 
     dist[src] = 0;
@@ -21,10 +20,6 @@ void dijkstras(vector<pair<int,int>> adj[], int V, int src) {
         int curr = pq.top().second;
         pq.pop();
 
-        if(visited[curr]) continue;
-
-        visited[curr] = true;
-
         for(pair<int,int> node: adj[curr]) {
             // weight of path from src to node -> node.second
             if(dist[curr]+node.second < dist[node.first]) {
@@ -32,10 +27,9 @@ void dijkstras(vector<pair<int,int>> adj[], int V, int src) {
                 pq.push(make_pair(dist[node.first], node.first));
             }
         }
-
     }
 
-
+    return dist;
 }
 
 int main()
