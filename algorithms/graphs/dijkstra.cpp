@@ -1,5 +1,6 @@
 #include <vector>
 #include <queue>
+#include <algorithm>
 using namespace std;
 
 void addEdge(vector <pair<int, int>> adj[], int u, int v, int wt) {
@@ -17,10 +18,20 @@ void dijkstras(vector<pair<int,int>> adj[], int V, int src) {
 
     while(pq.size()) {
 
-        pair<int,int> curr = pq.top();
-        pq.top();
+        int curr = pq.top().second;
+        pq.pop();
 
+        if(visited[curr]) continue;
 
+        visited[curr] = true;
+
+        for(pair<int,int> node: adj[curr]) {
+            // weight of path from src to node -> node.second
+            if(dist[curr]+node.second < dist[node.first]) {
+                dist[node.first] = dist[curr]+node.second;
+                pq.push(make_pair(dist[node.first], node.first));
+            }
+        }
 
     }
 
