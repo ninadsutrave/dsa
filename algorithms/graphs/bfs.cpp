@@ -2,6 +2,10 @@
 #include <queue>
 using namespace std;
 
+void addEdge(vector<int> adj[], int u, int v) {
+    adj[u].push_back(v);
+}
+
 void bfs(vector<int> adj[], int src, unordered_map<int,bool>& visited) {
 
     queue<int> q;
@@ -19,15 +23,14 @@ void bfs(vector<int> adj[], int src, unordered_map<int,bool>& visited) {
 int main() {
 
     int V, E;
-    cin>>V>>E;
+    int V = 5;
 
     vector<int> adj[V];
-
-    for(int i = 0; i<E; ++i) {
-        int u, v;
-        cin>>u>>v;
-        adj[u].push_back(v);
-    }
+    addEdge(adj, 0, 1);
+    addEdge(adj, 0, 4);
+    addEdge(adj, 2, 3);
+    addEdge(adj, 1, 4);
+    addEdge(adj, 3, 5);
 
     return 0;
 

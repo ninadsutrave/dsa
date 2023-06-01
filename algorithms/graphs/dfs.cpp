@@ -1,6 +1,10 @@
 #include <iostream>
 using namespace std;
 
+void addEdge(vector<int> adj[], int u, int v) {
+    adj[u].push_back(v);
+}
+
 void dfs(vector<int> adj[], unordered_map<int,bool>& visited, int src) {
 
     cout<<src<<" ";
@@ -17,15 +21,14 @@ void dfs(vector<int> adj[], unordered_map<int,bool>& visited, int src) {
 int main() {
 
     int V, E;
-    cin>>V>>E;
+    int V = 5;
 
     vector<int> adj[V];
-
-    for(int i = 0; i<E; ++i) {
-        int u, v;
-        cin>>u>>v;
-        adj[u].push_back(v);
-    }
+    addEdge(adj, 0, 1);
+    addEdge(adj, 0, 4);
+    addEdge(adj, 2, 3);
+    addEdge(adj, 1, 4);
+    addEdge(adj, 3, 5);
 
     unordered_map<int,bool> visited;
     for(int i = 0; i<V; ++i) {
