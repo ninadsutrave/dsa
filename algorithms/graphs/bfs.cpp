@@ -35,3 +35,8 @@ int main() {
     return 0;
 
 }
+
+/**
+ * Time complexity: O(V+E)
+ * Space complexity: O(V)
+*/

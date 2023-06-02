@@ -46,3 +46,14 @@ int main()
 
     return 0;
 }
+
+/**
+ * 
+ * Time Complexity: O((V + E) log V)
+ * Space Complexity: O(V)
+ * 
+ * Limitations:
+ *  Does not work on graphs with negative weights/negative cycles
+ *  Inefficient for dense graph (approaches)
+ *  Cannot be applied in cases of obstacles on path or additional path constraints
+*/
