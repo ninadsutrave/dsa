@@ -1,5 +1,6 @@
 #include <exception>
 #include <unordered_map>
+#include <iostream>
 using namespace std;
 
 template <typename T>
@@ -74,17 +75,52 @@ class BinarySearchTree {
         return root;
     }
 
-    BinaryTreeNode* getMinimumNode(BinaryTreeNode* root) {
+    BinaryTreeNode* getMaximumNode(BinaryTreeNode* root) {
         while (root->right != nullptr) {
             root = root->right;
         }
         return root;
     }
 
+    void inorderTraversalHelper(BinaryTreeNode* curr, vector<T>& traversal) {
+        if (curr != nullptr) {
+            inorderTraversalHelper(curr->left);
+            traversal.push_back(curr->val)
+            inorderTraversalHelper(curr->right);
+        }
+    }
+
+    void preorderTraversalHelper(BinaryTreeNode* curr, vector<T>& traversal) {
+        if (curr != nullptr) {
+            traversal.push_back(curr->val)
+            preorderTraversalHelper(curr->left);
+            preorderTraversalHelper(curr->right);
+        }
+    }
+
+    void postorderTraversalHelper(BinaryTreeNode* curr, vector<T>& traversal) {
+        if (curr != nullptr) {
+            postorderTraversalHelper(curr->left);
+            postorderTraversalHelper(curr->right);
+            traversal.push_back(curr->val)
+        }
+    }
+
+    void destroyTree(BinaryTreeNode* root) {
+        if (root != nullptr) {
+            destroyTree(root->left);
+            destroyTree(root->right);
+            delete root;
+        }
+    }
+
     public:
     BinarySearchTree() {
         root = nullptr;
         currentSize = 0;
+    }
+    ~BinarySearchTree() {
+        destroyTree(root);
     }
 
     void addNode(int val) {
@@ -119,11 +155,52 @@ class BinarySearchTree {
         return maxNode->val;
     }
 
+    vector<T> inorderTraversal() {
+        vector<T> traversal;
+        inorderTraversalHelper(root, traversal);
+        return traversal;
+    }
+
+    vector<T> preorderTraversal() {
+        vector<T> traversal;
+        preorderTraversalHelper(root, traversal);
+        return traversal;
+    }
+
+    vector<T> postorderTraversal() {
+        vector<T> traversal;
+        postorderTraversalHelper(root, traversal);
+        return traversal;
+    }
+
     size_t size() {
         return currentSize;
     }
 
-
-    
-
 };
+
+int main() {
+
+    BinarySearchTree<int> bst;
+    bst.addNode(50);
+    bst.addNode(30);
+    bst.addNode(20);
+    bst.addNode(40);
+    bst.addNode(70);
+    bst.addNode(60);
+    bst.addNode(10);
+
+    cout<<bst.minValue()<<"\n";
+
+    bst.removeNode(70);
+
+    cout<<bst.size()<<"\n";
+    cout<<bst.maxValue()<<"\n";
+
+    vector<int> traversal = bst.postorderTraversal();
+    for(int node: traversal) {
+        cout<< node <<" ";
+    }
+
+    return 0;
+}
