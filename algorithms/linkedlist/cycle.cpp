@@ -37,5 +37,7 @@ int main() {
     head->next->next->next = new LinkedListNode(7);
     head->next->next->next->next = head->next;
 
-    cout << isCyclic(head);
+    cout << isCyclic(head) <<"\n";
+
+    return 0;
 }
