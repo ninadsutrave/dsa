@@ -6,7 +6,6 @@ void addEdge(vector<int> adj[], int u, int v) {
 }
 
 void dfs(vector<int> adj[], unordered_map<int,bool>& visited, int src) {
-
     cout<<src<<" ";
     visited[src] = true;
 
@@ -15,7 +14,6 @@ void dfs(vector<int> adj[], unordered_map<int,bool>& visited, int src) {
             dfs(adj, visited, node);
         }
     }
-
 }
 
 int main() {
