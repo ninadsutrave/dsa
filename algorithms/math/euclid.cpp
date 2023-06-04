@@ -31,6 +31,10 @@ int gcd(int a, int b) {
 /*
  *  Time complexity: O(log(min(a, b)))
  *  Worst case occurs when the two numbers are consecutive fibonacci numbers
+ *  i.e. a = Fn, b = Fn-1 
+ *  By Binet's formula Fn = (phi)^n/root(5) = k^n
+ *  After n iterations a and b are reduced to a = 2, b = 1
+ *  Thus GCD is of logarithmic complexity (it reduces k^n to k in n steps)
  * 
  * Extended Euclidean algorithm finds integer coefficients x and y such that: ax + by = gcd(a, b) 
  * It particularly useful when a and b are coprime 
