@@ -34,4 +34,15 @@ int main() {
     cout<< binomialCoefficient(10,3) << "\n";
     cout<< binomialCoefficient(6,5) << "\n";
 
+    return 0;
+
 }
+
+/**
+ * 
+ * Time Complexity: (O(min(k, n-k)))
+ * Space Complexity: O(1)
+ * Binomial coefficients are used in combinatorics to calculate
+ * the number of ways of picking k items from a group of n items
+ * 
+*/
