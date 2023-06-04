@@ -56,5 +56,11 @@ int main() {
  * Thus Time Complexity is O(nlog(logkmax))
  * 
  * Applications of spf:
- *  Finding prime factorisation of numbers in O(logn) time per query
+ *  • Finding prime factorisation of numbers in O(logn) time per query
+ *  • Prime factorisation of a number can be used to find total number of factors
+ *  • If N = X^a. Y^b. Z^c (X, Y, Z are prime)
+ *    Total number of factors of N  =   (a+1).(b+1).(c+1)
+ *    Sum of factors of N           =   (X^(a+1) - 1)/(X-1) * (Y^(b+1) - 1)/(Y-1) * (Z^(c+1) - 1)/(Z-1)
+ *    Product of factors            =   N^(total no. of factors)/2
+ * 
 */
