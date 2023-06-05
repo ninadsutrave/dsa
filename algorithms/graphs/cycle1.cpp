@@ -7,16 +7,16 @@ void addEdge(vector<int> adj[], int u, int v) {
     adj[v].push_back(u);
 }
 
-bool dfs(vector<int> adj[], int src, int pred, unordered_map<int,bool>& visited) {
+bool isCyclic(vector<int> adj[], int src, int pred, unordered_map<int,bool>& visited) {
 
     visited[src] = true;
 
     for(int neighbour: adj[src]) {
         if(!visited[neighbour]) {
-            if(dfs(adj, neighbour, src, visited)) {
+            if(isCyclic(adj, neighbour, src, visited)) {
                 return true;
             }
-        } else if(neighbour != pred) {
+        } else if(neighbour != pred) { // if visited already and it isnt the predecessor, it proves its a loop 
             return true;
         }
     }
@@ -37,12 +37,17 @@ int main() {
     addEdge(adj, 1, 4);
     addEdge(adj, 3, 5);
 
+    bool cyclic = false;
+
     unordered_map<int,bool> visited;
     for(int i = 0; i<V; ++i) {
         if(!visited[i]) {
-            dfs(adj, i, -1, visited);
+            cyclic = cyclic | isCyclic(adj, i, -1, visited);
         }
     }
+
+    if(cyclic) cout<<"Cyclic";
+    else cout<<"Not cyclic";
 
     return 0;
 }
@@ -50,4 +55,9 @@ int main() {
 /**
  * Time Complexity: O(V+E)
  * Space Complexity: O(V+E) adj list + visited array + call stack
+ * 
+ * If we are performing dfs on a graph, and the neighbour of a given node
+ * is not its predecessor, but still is visited, it signifies a loop
+ * 
+ * So we will perform dfs and if this condition occurs we return true
 */
