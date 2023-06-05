@@ -23,10 +23,30 @@ long long int binomialCoefficient(int n, int k) {
 
 }
 
-long long int catalanNumber(int n) {
+long long int catalan(int n) {
 
-    return binomialCoefficient(2*n, n)/(n+1);
+    vector<long long int> catalan(n+1);
+    catalan[0] = catalan[1] = 1;
 
+    for (int i = 2; i <= n; ++i) {
+        catalan[i] = 0;
+        for (int j = 0; j < i; ++j) {
+            catalan[i] = catalan[i] + (catalan[j] * catalan[i - j - 1]);
+        }
+    }
+
+    return catalan[n];
+}
+
+int main() {
+
+    int n = 15;
+
+    cout<<binomialCoefficient(2*n, n)/(n+1)<<"\n";
+    cout<<catalan(n)<<"\n";
+
+
+    return 0;
 }
 
 /**
