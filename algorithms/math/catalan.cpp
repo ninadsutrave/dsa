@@ -1,8 +1,39 @@
+#include <algorithm>
+#include <exception>
+#include <iostream>
+using namespace std;
+
+long long int binomialCoefficient(int n, int k) {
+
+    if (n < 0 || k < 0) {
+        throw invalid_argument("n and k must be non negative");
+    }
+
+    if(k>n) return 0;
+
+    k = min(k, n-k);
+    long long int result = 1;
+
+    for (int i = 1; i <= k; ++i) {
+        result = result*(n - i + 1);
+        result = result/(i);
+    }
+
+    return result;
+
+}
+
+long long int catalanNumber(int n) {
+
+    return binomialCoefficient(2*n, n)/(n+1);
+
+}
+
 /**
  * Catalan Numbers
  * 1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862, …  
  * 
- * Cn = (2n)!/n!(n+1)!
+ * Cn = (2n)!/n!(n+1)! = C(2n,n)/(n+1) -> (binomial coefficient)
  * 
  * C0 = 1
  * Cn+1 = sum(Ci * Cn-i)
