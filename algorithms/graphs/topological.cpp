@@ -6,12 +6,12 @@ void addEdge(vector<int> adj[], int u, int v) {
     adj[u].push_back(v);
 }
 
-void dfs(vector<int> adj[], vector<bool>& visited, int src, stack<int>& topologicalSort) {
+void sort(vector<int> adj[], vector<bool>& visited, int src, stack<int>& topologicalSort) {
     visited[src] = true;
 
     for(int node: adj[src]) {
         if(!visited[node]) {
-            dfs(adj, visited, node, topologicalSort);
+            sort(adj, visited, node, topologicalSort);
         }
     }
 
@@ -34,7 +34,7 @@ int main() {
     stack<int> topologicalSort;
     for(int i = 0; i<V; ++i) {
         if(!visited[i]) {
-            dfs(adj, visited, i, topologicalSort);
+            sort(adj, visited, i, topologicalSort);
         }
     }
 
@@ -54,8 +54,14 @@ int main() {
  * A linear ordering of nodes such that if an edge exists
  * from u to v, u occurs before v in the ordering.
  * 
- * It is valid only for directed acyclic graphs. If a 
+ * It is valid only for directed acyclic graphs (DAG). If a 
  * cycle exists we won't be able to get a valid sort.
  * 
  * There can be multiple valid topological sorts.
+ * 
+ * Applications:
+ *  1. Given a list of tasks/courses, and their pre requisite tasks/courses
+ *     find if it is possible to complete all tasks/courses
+ *     (this can be done by checking if resulting graph is a DAG)
+ *     The order in which  they need to be executed is the topological sort
 */

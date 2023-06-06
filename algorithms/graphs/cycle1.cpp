@@ -7,7 +7,7 @@ void addEdge(vector<int> adj[], int u, int v) {
     adj[v].push_back(u);
 }
 
-bool isCyclic(vector<int> adj[], int src, int pred, unordered_map<int,bool>& visited) {
+bool isCyclic(vector<int> adj[], int src, int pred, vector<bool>& visited) {
 
     visited[src] = true;
 
@@ -39,10 +39,13 @@ int main() {
 
     bool cyclic = false;
 
-    unordered_map<int,bool> visited;
+    vector<bool> visited(V, false);
     for(int i = 0; i<V; ++i) {
         if(!visited[i]) {
-            cyclic = cyclic | isCyclic(adj, i, -1, visited);
+            if(isCyclic(adj, i, -1, visited)) {
+                cyclic = true;
+                break;
+            }
         }
     }
 

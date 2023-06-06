@@ -6,14 +6,14 @@ void addEdge(vector<int> adj[], int u, int v) {
     adj[u].push_back(v);
 }
 
-bool isCyclic(vector<int> adj[], int src, unordered_map<int,bool>& visited, vector<bool>& isOnStack) {
+bool isCyclic(vector<int> adj[], int src, vector<bool>& visited, vector<bool>& isOnStack) {
 
     visited[src] = true;
     isOnStack[src] = true;
 
     for(int neighbour: adj[src]) {
         if(isOnStack[neighbour]) return true;
-        if(isCyclic(adj, neighbour, visited, isOnStack)) {
+        if(!visited[src] && isCyclic(adj, neighbour, visited, isOnStack)) {
             return true;
         }
     }
@@ -37,11 +37,14 @@ int main() {
 
     bool cyclic = false;
 
-    unordered_map<int,bool> visited;
+    vector<bool> visited(V, false);
+    vector<bool> isOnStack(V, false);
     for(int i = 0; i<V; ++i) {
-        vector<bool> isOnStack(V, false);
         if(!visited[i]) {
-            cyclic = cyclic | isCyclic(adj, i, visited, isOnStack);
+            if(isCyclic(adj, i, visited, isOnStack)) {
+                cyclic = true;
+                break;
+            }
         }
     }
 
