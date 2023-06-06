@@ -18,7 +18,7 @@ double exp(double base, int power) {
     }
 
     double result = 1;
-    while (power > 0) {
+    while (power) {
         if (power&1) {
             result = result*base;
         }
@@ -36,4 +36,14 @@ int main() {
     cout<<exp(8,-5)<<"\n";
     cout<<exp(0,0)<<"\n";
 
+    return 0;
+
 }
+
+/**
+ * Time Complexoty: O(logn)
+ * If exponent -> even 
+ * 
+ * 
+ * 
+*/
