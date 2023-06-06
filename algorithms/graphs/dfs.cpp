@@ -1,11 +1,12 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 void addEdge(vector<int> adj[], int u, int v) {
     adj[u].push_back(v);
 }
 
-void dfs(vector<int> adj[], unordered_map<int,bool>& visited, int src) {
+void dfs(vector<int> adj[], vector<bool>& visited, int src) {
     cout<<src<<" ";
     visited[src] = true;
 
@@ -28,7 +29,7 @@ int main() {
     addEdge(adj, 1, 4);
     addEdge(adj, 3, 5);
 
-    unordered_map<int,bool> visited;
+    vector<bool> visited(V, false);
     for(int i = 0; i<V; ++i) {
         if(!visited[i]) {
             dfs(adj, visited, i);
