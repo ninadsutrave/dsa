@@ -63,5 +63,5 @@ int main() {
  *  1. Given a list of tasks/courses, and their pre requisite tasks/courses
  *     find if it is possible to complete all tasks/courses
  *     (this can be done by checking if resulting graph is a DAG)
- *     The order in which  they need to be executed is the topological sort
+ *     The order in which they need to be executed is the topological sort
 */

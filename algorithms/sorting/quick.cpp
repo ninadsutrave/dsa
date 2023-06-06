@@ -14,6 +14,14 @@ int partition(vector<int>& nums, int low, int high) {
     int pivot = nums[pivotIndex]; 
     int i = low - 1;
 
+    /**
+     * Dry run on paper to fully understand!
+     * 
+     * initially i is before the starting element
+     * as the iterator proceeds, it places smaller 
+     * elements at the beginning and i is incremented
+    */
+
     swap(nums[pivotIndex], nums[high]);
     for (int j = low; j<high; ++j) {
         if (nums[j] <= pivot) {
@@ -55,7 +63,7 @@ int main() {
  * and all elements after it are larger, then it is at its sorted position.
  * 
  * Best case time complexity: O(nlogn)
- * (achieved when pivot chosen is always the median)
+ * (achieved when pivot chosen is always the median, thus equal partitions are formed)
  * 
  * Worst case time complexity: O(n^2)
  * (pivot chosen is always at the beginning or end - for eg if array is sorted and we are choosing pivot arr[0] or arr[n-1])
@@ -64,6 +72,16 @@ int main() {
  * Average case time compleity: O(nlogn)
  * (choosing random pivot has expected complexity of nlogn)
  * 
- * Space complexity: O(n) call stack size
+ * 
+ * Best pivoting techniques:
+ * (in practice quick sort is faster than merge sort, so this is very crucial)
+ *  1. Random pivoting
+ *  2. Median of first, last and middle element
+ *  3. Randomly select three array elements and take their median
+ * 
+ * 
+ * The call stack size contributes to the space complexity
+ * Best Case Space Complexity: O(logn) when arrays partition equally always 
+ * Worst Case Space complexity: O(n) when arrays partition very unevenly
  * 
  **/
