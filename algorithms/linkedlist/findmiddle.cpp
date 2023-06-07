@@ -6,39 +6,33 @@ struct LinkedListNode {
     LinkedListNode* next;
     LinkedListNode() {
         val = 0;
-        next = NULL;
+        next = nullptr;
     }
     LinkedListNode(int data) {
         val = data;
-        next = NULL;
+        next = nullptr;
     }
 };
 
-int calcLength(LinkedListNode* head) {
-    
-    int length;
-    for(length = 0; head; head = head->next) {
-        ++length;
+LinkedListNode* findMiddleElement(LinkedListNode* head) {
+    LinkedListNode* slow = head;
+    LinkedListNode* fast = head->next;
+
+    while(fast!=NULL && fast->next!=NULL) {
+        slow = slow->next;
+        fast = fast->next->next;
     }
 
-    return length;
-
+    return slow;
 }
 
-int getLength(LinkedListNode* head) {
-    if(!head) return 0;
-    return getLength(head->next) + 1;
-}
-
-int main() {
-
+int main () {
     LinkedListNode* head = new LinkedListNode(5);
     head->next = new LinkedListNode(10);
     head->next->next = new LinkedListNode(2);
     head->next->next->next = new LinkedListNode(7);
-    head->next->next->next->next = new LinkedListNode(14);
 
-    cout << getLength(head);
+    cout << findMiddleElement(head)->val <<"\n";
 
     return 0;
 }
