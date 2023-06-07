@@ -6,31 +6,31 @@ void mergeTwoSortedSegments(vector<int>& arr, int start, int mid, int end) {
 
     vector<int> merged(end-start+1);
 
-    int ptr1 = start;
-    int ptr2 = mid+1;
+    int left = start;
+    int right = mid+1;
     int index = 0;
 
-    while(ptr1<=mid && ptr2<=end) {
-        if(arr[ptr1]<arr[ptr2]) {
-            merged[index] = arr[ptr1];
-            ++ptr1;
+    while(left<=mid && right<=end) {
+        if(arr[left]<arr[right]) {
+            merged[index] = arr[left];
+            ++left;
         } else {
-            merged[index] = arr[ptr2];
-            ++ptr2;
+            merged[index] = arr[right];
+            ++right;
         }
         ++index;
     }
 
-    while(ptr1<=mid) {
-        merged[index] = arr[ptr1];
+    while(left<=mid) {
+        merged[index] = arr[left];
         ++index;
-        ++ptr1;
+        ++left;
     }
 
-    while(ptr2<=end) {
-        merged[index] = arr[ptr2];
+    while(right<=end) {
+        merged[index] = arr[right];
         ++index;
-        ++ptr2;
+        ++right;
     }
 
     for(int num: merged) {
@@ -90,7 +90,7 @@ int main() {
  * Best Case: when input array is already sorted (or has low inversions)
  * very less number of comparisons needed
  * 
- * Space Complexity: O(n) 
- * (space of extra merged array used for sorting array segments)
+ * Space Complexity: O(n + logn) 
+ * (space of extra merged array used for sorting array segments, and recursion stack)
  * 
 */
