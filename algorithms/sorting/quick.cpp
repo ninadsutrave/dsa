@@ -43,7 +43,7 @@ void quickSort(vector<int>& nums, int low, int high) {
 }
 
 int main() {
-    vector<int> nums = {9, 5, 7, 1, 3, 10, 4, 2, 6, 8};
+    vector<int> nums {9, 5, 7, 1, 3, 10, 4, 2, 6, 8};
     int n = nums.size();
 
     quickSort(nums, 0, n - 1);
@@ -58,9 +58,18 @@ int main() {
 
 /**
  * 
+ * Recurrence: T(n) = T(k) + T(n-k-1) + O(n)
+ * O(n) -> time reqd for partitioning
+ * k and n-k+1 are sizes of the partitions
+ * 
  * Quick sort works on the concept that, 
  * if for an element in the array, all elements before it are smaller,
  * and all elements after it are larger, then it is at its sorted position.
+ * 
+ * C++ uses a variation of the Quick Sort algorithm called Introsort. 
+ * Introsort is a hybrid sorting algorithm that combines Quick Sort, Heap Sort, and Insertion Sort.
+ * 
+ * Quick sort is NOT a stable sorting algorithm.
  * 
  * Best case time complexity: O(nlogn)
  * (achieved when pivot chosen is always the median, thus equal partitions are formed)
