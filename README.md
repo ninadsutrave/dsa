@@ -1,12 +1,14 @@
 ## DSA Preparation
 
-Eat
+*EAT*
 
-Sleep
+*SLEEP*
 
-Code 
+*CODE*
 
-Repeat
+*REPEAT*
+
+You can ace that interview you are prepping for!
 
 ## Guide
 
