@@ -6,6 +6,23 @@ void addEdge(vector<int> adj[], int u, int v) {
     adj[u].push_back(v);
 }
 
+bool isCyclic(vector<int> adj[], int src, vector<bool>& visited, vector<bool>& isOnStack) {
+
+    visited[src] = true;
+    isOnStack[src] = true;
+
+    for(int neighbour: adj[src]) {
+        if(isOnStack[neighbour]) return true;
+        if(!visited[src] && isCyclic(adj, neighbour, visited, isOnStack)) {
+            return true;
+        }
+    }
+
+    isOnStack[src] = false;
+    return false;
+
+}
+
 void sort(vector<int> adj[], vector<bool>& visited, int src, stack<int>& topologicalSort) {
     visited[src] = true;
 
@@ -30,17 +47,36 @@ int main() {
     addEdge(adj, 1, 4);
     addEdge(adj, 3, 5);
 
+    bool isDAG = true; // run topological sort only if graph is directed acyclic
+
     vector<bool> visited(V, false);
-    stack<int> topologicalSort;
+    vector<bool> isOnStack(V, false);
     for(int i = 0; i<V; ++i) {
-        if(!visited[i]) {
-            sort(adj, visited, i, topologicalSort);
+        for(int i = 0; i<V; ++i) {
+            if(!visited[i]) {
+                if(isCyclic(adj, i, visited, isOnStack)) {
+                    isDAG = false;
+                    break;
+                }
+            }
         }
     }
 
-    while(topologicalSort.size()) {
-        cout<<topologicalSort.top()<<" "; 
-        topologicalSort.pop();
+    if(isDAG) {
+        visited.resize(V, false);
+        stack<int> topologicalSort;
+        for(int i = 0; i<V; ++i) {
+            if(!visited[i]) {
+                sort(adj, visited, i, topologicalSort);
+            }
+        }
+
+        while(topologicalSort.size()) {
+            cout<<topologicalSort.top()<<" "; 
+            topologicalSort.pop();
+        }
+    } else {
+        cout<<"Not a directed acyclic graph"<<"\n";
     }
 
     return 0;

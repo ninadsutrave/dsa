@@ -10,9 +10,9 @@ void dfs(vector<int> adj[], vector<bool>& visited, int src) {
     cout<<src<<" ";
     visited[src] = true;
 
-    for(int node: adj[src]) {
-        if(!visited[node]) {
-            dfs(adj, visited, node);
+    for(int neighbour: adj[src]) {
+        if(!visited[neighbour]) {
+            dfs(adj, visited, neighbour);
         }
     }
 }

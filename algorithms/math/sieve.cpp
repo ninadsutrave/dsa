@@ -8,11 +8,11 @@ void sieve(vector<bool>& isPrime, vector<int>& spf, int N) {
     spf.resize(N+1, -1);
     isPrime[0] = isPrime[1] = false;
 
-    for(int i = 2; i<N; ++i) {
+    for(int i = 2; i*i<N; ++i) {
         if(isPrime[i]) {
             spf[i] = i;
 
-            for(int j = i+i; i<N; j = j+i) {
+            for(int j = i*i; j<N; j = j+i) {
                 isPrime[j] = false;
                 spf[j] = i;
             }
@@ -27,12 +27,13 @@ int main() {
     vector<int> spf;
 
     sieve(isPrime, spf, N);
-    cout<<isPrime[42517]<<"\n";
-    cout<<isPrime[34193]<<"\n";
-    cout<<isPrime[455231]<<"\n";
+    cout<<isPrime[345679]<<"\n";
+    cout<<isPrime[680149]<<"\n";
+    cout<<isPrime[459647]<<"\n";
     
     int num = 99684;
-    while(num) {
+    cout<<spf[num]<<" ";
+    while(num != 1) {
         cout<<spf[num]<<" ";
         num  = num/spf[num];
     }
@@ -42,18 +43,32 @@ int main() {
 
 /**
  * 
+ * Sieve of Eratosthenes
+ * 
  * Number of primes between 1 to n is roughly n/ln(n)
  *  
  * Time complexity analysis:
- * Multiples of k will be cancelled out in n/k iterations
  * 
- * Thus time taken = O(n* sum(n/k))
+ * Outer loop: Runs √n times
+ * 
+ * Inner loop: Multiples of k will be cancelled out in n/k iterations 
+ * (k will always be prime in our case)
+ * 
+ * Thus time taken = O(√n * sum(n/k))
  * 
  * sum(n/k) = 1/2 + 1/3 + 1/5 + 1/7 + 1/11 + ...
  *          = ln(ln(kmax)) 
  *          (where kmax is the largest prime number k)
  * 
- * Thus Time Complexity is O(nlog(logkmax))
+ * Since i goes till √n, kmax can be atmost √n
+ * 
+ * Thus time taken = O(√n * sum(n/k))
+ *                 = O(√n * √n log(log(√n)))
+ *                 = O(n log(log(√n)))
+ *                 = O(n log(0.5 * log(n)))
+ *                 = O(n log(log(n)))
+ * 
+ * Thus Time Complexity is O(n log(log(n)))
  * 
  * Applications of spf:
  *  • Finding prime factorisation of numbers in O(logn) time per query

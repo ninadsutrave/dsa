@@ -34,7 +34,7 @@ int main() {
 
     for(vector<int> row: result) {
         for(int value: row) {
-            cout<< value << " ";
+            cout<< value << "\t";
         }
         cout<<"\n";
     }
