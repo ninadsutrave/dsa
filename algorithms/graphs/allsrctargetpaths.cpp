@@ -7,10 +7,10 @@ void addEdge(vector<int> adj[], int u, int v) {
     adj[v].push_back(u);
 }
 
-void getAllPaths(vector<int> adj[], vector<bool>& visited, int src, string path, int target) {
+void getAllPaths(vector<int> adj[], vector<vector<int>>& allPaths, vector<bool>& visited, int src, vector<int> currPath, int target) {
 
     if(src == target) {
-        cout<<path<<"\n";
+        allPaths.push_back(currPath);
         return;
     }
 
@@ -18,9 +18,9 @@ void getAllPaths(vector<int> adj[], vector<bool>& visited, int src, string path,
 
     for(int neighbour: adj[src]) {
         if(!visited[neighbour]) {
-            path = path + to_string(neighbour);
-            getAllPaths(adj, visited, neighbour, path, target);
-            path.pop_back();
+            currPath.push_back(neighbour);
+            getAllPaths(adj, allPaths, visited, neighbour, currPath, target);
+            currPath.pop_back();
             visited[neighbour] = false;
         }
     }
@@ -45,8 +45,17 @@ int main() {
     int target = 5;
  
     vector<bool> visited(V, false);
-    string currPath = to_string(src);
-    getAllPaths(adj, visited, src, currPath, target);
+    vector<int> path;
+    vector<vector<int>> allPaths;
+    path.push_back(src);
+    getAllPaths(adj, allPaths, visited, src, path, target);
+
+    for(vector<int> path: allPaths) {
+        for(int node: path) {
+            cout<<node<<" ";
+        }
+        cout<<"\n";
+    }
 
     return 0;
 
