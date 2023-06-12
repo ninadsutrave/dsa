@@ -10,6 +10,14 @@ int getRandomPivot(int low, int high) {
 }
 
 int partition(vector<int>& nums, int low, int high) {
+
+    /**
+     * 1. Find a random pivot
+     * 2. Move it to the end of the array
+     * 3. Partition the remaining elements
+     * 4. Insert pivot at designated position
+    */
+
     int pivotIndex = getRandomPivot(low, high);
     int pivot = nums[pivotIndex]; 
     int i = low - 1;
