@@ -11,27 +11,26 @@ class Queue {
     private: 
     stack<T> data;
     stack<T> helper;
-    size_t currSize;
+    size_t currentSize;
     T frontValue;
 
     public:
     Queue() {
-        currSize = 0;
+        currentSize = 0;
     }
 
     ~Queue() {
-        currSize = 0;
-        while(data.size()) {
-            data.pop();
+        while(currentSize) {
+            dequeue();
         }
     }
 
     void enqueue(const T& value) {
 
-        if(currSize == 0) frontValue = value;
+        if(currentSize == 0) frontValue = value;
 
         data.push(value);
-        ++currSize;
+        ++currentSize;
     }
 
     void dequeue() {
@@ -53,7 +52,7 @@ class Queue {
             helper.pop();
         }
 
-        --currSize;
+        --currentSize;
 
     }
 
@@ -76,11 +75,11 @@ class Queue {
     }
 
     bool empty() {
-        return (currSize == 0);
+        return (currentSize == 0);
     }
 
     size_t size() {
-        return currSize;
+        return currentSize;
     }
 
 };

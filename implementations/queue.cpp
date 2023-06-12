@@ -8,10 +8,10 @@ class Queue {
 
     private:
     struct LinkedListNode {
-        T data;
+        T val;
         LinkedListNode* next;
         LinkedListNode (const T& data) {
-            this->data = data;
+            val = data;
             next = nullptr;
         }
     };
@@ -28,7 +28,7 @@ class Queue {
     }
 
     ~Queue() {
-        while (!empty()) {
+        while (currentSize) {
             dequeue();
         }
     }
@@ -36,7 +36,7 @@ class Queue {
     void enqueue(const T& value) {
 
         LinkedListNode* newNode = new LinkedListNode(value);
-        if(empty()) {
+        if(currentSize == 0) {
             frontPtr = backPtr = newNode;
         } else {
             backPtr->next = newNode;
@@ -48,7 +48,7 @@ class Queue {
 
     void dequeue() {
 
-        if(empty()) {
+        if(currentSize == 0) {
             throw out_of_range("Queue is empty");
         } 
 
@@ -60,12 +60,13 @@ class Queue {
             backPtr = nullptr;
         }
         --currentSize;
+
     }
 
     const T& front() {
 
         if(frontPtr) {
-            return frontPtr->data;
+            return frontPtr->val;
         } else {
             throw out_of_range("Queue is empty");
         }
@@ -75,7 +76,7 @@ class Queue {
     const T& back() {
 
         if(backPtr) {
-            return backPtr->data;
+            return backPtr->val;
         } else {
             throw out_of_range("Queue is empty");
         }
