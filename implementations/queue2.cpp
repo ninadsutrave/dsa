@@ -1,4 +1,4 @@
-// implement a queue using stacks
+// implement a queue using 2 stacks
 
 #include <exception>
 #include <stack>
@@ -65,15 +65,6 @@ class Queue {
         return frontValue;
     }
 
-    const T& back() {
-
-        if(empty()) {
-            throw out_of_range("Queue is empty");
-        }
-
-        return data.top();
-    }
-
     bool empty() {
         return (currentSize == 0);
     }
@@ -100,7 +91,6 @@ int main() {
 
     cout<<q.size()<<"\n";
     cout<<q.front()<<"\n";
-    cout<<q.back()<<"\n";
 
     return 0;
 }

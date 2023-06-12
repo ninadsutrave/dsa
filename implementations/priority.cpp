@@ -20,5 +20,4 @@
  *  • Self balancing binary search tree
  *  • Skip list
  *  • Fibonacci heap
- * 
 */

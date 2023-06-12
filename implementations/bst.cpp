@@ -136,11 +136,11 @@ class BinarySearchTree {
 
     void removeNode(int val) {
 
-        if(!isPresent[val]) {
+        if(isPresent.find(val) == isPresent.end()) {
             return;
         }
 
-        isPresent[val] = true;
+        isPresent.erase(val);
         root = deleteNodeHelper(root, val);
 
     }
@@ -197,9 +197,9 @@ int main() {
     cout<<bst.size()<<"\n";
     cout<<bst.maxValue()<<"\n";
 
-    vector<int> traversal = bst.postorderTraversal();
-    for(int node: traversal) {
-        cout<< node <<" ";
+    vector<int> postorderTraversal = bst.postorderTraversal();
+    for(int node: postorderTraversal) {
+        cout<< node << " ";
     }
 
     return 0;

@@ -72,16 +72,6 @@ class Queue {
         }
 
     }
-
-    const T& back() {
-
-        if(backPtr) {
-            return backPtr->val;
-        } else {
-            throw out_of_range("Queue is empty");
-        }
-
-    }
     
     bool empty() {
         return (currentSize == 0);
@@ -105,7 +95,6 @@ int main() {
     cout<<q.size()<<"\n";
     cout<<q.empty()<<"\n";
     cout<<q.front()<<"\n";
-    cout<<q.back()<<"\n";
 
 }
 

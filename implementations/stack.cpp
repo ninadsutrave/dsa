@@ -53,7 +53,7 @@ class Stack {
 
     }
 
-    const T& peek() {
+    const T& top() {
         if(topPtr) {
             return topPtr->val;
         } else {
@@ -82,13 +82,13 @@ int main() {
     s.push(-4);
 
     cout<<s.size()<<"\n";
-    cout<<s.peek()<<"\n";
+    cout<<s.top()<<"\n";
 
     s.pop();
     s.pop();
 
     cout<<s.size()<<"\n";
-    cout<<s.peek()<<"\n";
+    cout<<s.top()<<"\n";
 
     s.pop();
     s.pop();
