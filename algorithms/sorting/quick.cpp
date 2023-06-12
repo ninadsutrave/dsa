@@ -63,7 +63,6 @@ int main() {
     return 0;
 }
 
-
 /**
  * 
  * Recurrence: T(n) = T(k) + T(n-k-1) + O(n)

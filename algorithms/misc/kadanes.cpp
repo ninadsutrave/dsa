@@ -1,37 +1,48 @@
 #include <iostream>
 using namespace std;
 
-void showOutput(int sum, vector<int>& range) {cout<<sum<<"\n"; cout<<range[0]<<" "<<range[1]<<"\n";} void getInput(int& N, vector<int>& nums) {cin>>N; nums.resize(N); for(int i = 0; i<N; ++i) {cin>>nums[i];}}
-/**************************************************/
-int main() {
+pair<int,int> kadanes(vector<int>& nums) {
 
-    int N;
-    vector<int> nums;
-    getInput(N, nums);
-
+    pair<int,int> range;
+    int length = nums.size();
     int currSum = 0;
     int maxSum = 0;
     int start = 0;
-    vector<int> range;
 
-    for(int i = 0; i<N; ++i) {
+    for(int i = 0; i<length; ++i) {
         if(currSum>maxSum) {
             maxSum = currSum;
-            range[0] = start;
-            range[1] = i;
+            range.first = start;
+            range.second = i;
         }
 
         if(currSum<0) {
             currSum = 0;
-            start = i;
+            range.first = i;
         }
     }
 
-    showOutput(maxSum, range);
+    return range;
+
+}
+
+int main() {
+
+    vector<int> nums {9,-2,5,6,0,1,2,-1,9,0,4,14};
+
+    pair<int,int> range = kadanes(nums);
+    long long sum = 0;
+
+    for(int i = range.first; i<=range.second; ++i) {
+        sum = sum + nums[i];
+    }
+
+    cout<<sum<<"\n";
 
     return 0;
 }
 
 /**
- * 
+ * Time Complexity: O(N)
+ * Space Complexity: O(1)
 */
