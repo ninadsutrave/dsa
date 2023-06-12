@@ -4,11 +4,8 @@
 #include <queue>
 using namespace std;
 
-void addEdge(vector<int> adj[], int u, int v) {
-    adj[u].push_back(v);
-}
-
-vector<vector<int>> bfs(vector<vector<int>>& matrix) {
+// returns a 2d matrix, with every cell value as distance of the nearest 0
+vector<vector<int>> multisourceBFS(vector<vector<int>>& matrix) {
 
     int n = matrix.size();
     int m = matrix[0].size();
@@ -61,11 +58,18 @@ int main() {
         {1,1,1,0}
     };
 
+    vector<vector<int>> dist = multisourceBFS(matrix);
+
     return 0;
 
 }
 
 /**
- * Time complexity: O(V+E)
- * Space complexity: O(V)
+ * Time complexity: O(N*M)
+ * Space complexity: O(N*M)
+ * 
+ * Works by starting at every 0 as the source simutaneously
+ * Marks all zeroes as distance 0 and moves 1 step from every source
+ * Marks all these cells as distance 1 and continues similarly
+ * Maintains a visited matrix to avoid loops
 */
