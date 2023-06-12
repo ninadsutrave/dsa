@@ -74,6 +74,9 @@ int main() {
  * 
  * Merge sort follows the divide-and-conquer paradigm. It efficiently sorts an array 
  * by recursively dividing it into smaller subarrays, sorting them independently, and then merging them.
+ * It explots the facts that: 
+ *   a) an array with a single element is a sorted array (base case)
+ *   b) two sorted arrays can be merged in linear time
  * 
  * Key points:
  *  1. It is a stable sorting algorithm

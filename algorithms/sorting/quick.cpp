@@ -74,9 +74,6 @@ int main() {
  * if for an element in the array, all elements before it are smaller,
  * and all elements after it are larger, then it is at its sorted position.
  * 
- * C++ uses a variation of the Quick Sort algorithm called Introsort. 
- * Introsort is a hybrid sorting algorithm that combines Quick Sort, Heap Sort, and Insertion Sort.
- * 
  * Quick sort is NOT a stable sorting algorithm.
  * 
  * Best case time complexity: O(nlogn)
@@ -100,5 +97,24 @@ int main() {
  * The call stack size contributes to the space complexity
  * Best Case Space Complexity: O(logn) when arrays partition equally always 
  * Worst Case Space complexity: O(n) when arrays partition very unevenly
+ * 
+ * C++ sorting functions:
+ *  1. sort():   
+ *     Algorithm - Introsort (Hybrid of Quicksort, Heap Sort and Insertion Sort) 
+ *     Best/Average/Worst - O(NlogN)
+ *     Auxiliary Space- O(logN)
+ *     Stable - No
+ * 
+ *  2. stable_sort():   
+ *     Algorithm - Merge Sort
+ *     Best/Average/Worst - O(NlogN)
+ *     Auxiliary Space- O(N)
+ *     Stable - Yes
+ * 
+ *  3. qsort():   
+ *     Algorithm - Quick Sort
+ *     Best/Average - O(NlogN), Worst - O(N^2)
+ *     Auxiliary Space- O(logN)
+ *     Stable - Depends on comparator function
  * 
  **/

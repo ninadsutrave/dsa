@@ -15,6 +15,9 @@ struct LinkedListNode {
 };
 
 LinkedListNode* findMiddleElement(LinkedListNode* head) {
+
+    if(head == NULL) return head;
+    
     LinkedListNode* slow = head;
     LinkedListNode* fast = head->next;
 
