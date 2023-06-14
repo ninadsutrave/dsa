@@ -10,12 +10,25 @@ class Vector {
     size_t currentSize;
 
     public:
+    Vector() {
+        currentSize = 0;
+    }
+
     Vector(size_t size) {
         currentSize = size;
         data = new T[size];
 
         for (long long i = 0; i<size; ++i) {
             data[i] = 0;
+        }
+    }
+
+    Vector(size_t size, const T& value) {
+        currentSize = size;
+        data = new T[size];
+
+        for (long long i = 0; i<size; ++i) {
+            data[i] = value;
         }
     }
 
@@ -43,6 +56,10 @@ class Vector {
     }
 
     void pop_back() {
+
+        if(currentSize == 0) {
+            throw out_of_range("Vector is empty");
+        }
         --currentSize;
     }
 

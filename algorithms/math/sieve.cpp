@@ -18,6 +18,13 @@ void sieve(vector<bool>& isPrime, vector<int>& spf, int N) {
             }
         }
     }
+
+    // for primes greater than √N
+    for(int i = 2; i<=N; ++i) {
+        if(isPrime[i]) {
+            spf[i] = i;
+        }
+    }
 }
 
 int main() {
