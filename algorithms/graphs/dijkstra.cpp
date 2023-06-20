@@ -48,12 +48,18 @@ int main()
 }
 
 /**
- * 
  * Time Complexity: O((V + E) log V)
  * Space Complexity: O(V)
+ * 
+ * It is a greedy based approach as opposed to Bellman Ford 
+ * algorithm which is based on dynamic programming.
  * 
  * Limitations:
  *  Does not work on graphs with negative weights/negative cycles
  *  Inefficient for dense graph (approaches)
  *  Cannot be applied in cases of obstacles on path or additional path constraints
+ * 
+ * Advantages:
+ *  It is more efficient in case of positive weighted graphs 
+ *  Bellman Ford has O(V.E) time complexity
 */
