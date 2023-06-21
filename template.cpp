@@ -86,9 +86,9 @@ void buildSegmentTree(vector<int>& arr, vector<int>& segmentTree, ll start, ll c
     }
         
     ll mid = (start + end)/2;
-    buildSegmentTree(arr, segmentTree,     2 * curr,   start, mid);
-    buildSegmentTree(arr, segmentTree, 2 * curr + 1, mid + 1, end);
-    segmentTree[curr] = segmentTree[2 * curr] + segmentTree[2 * curr + 1];
+    buildSegmentTree(arr, segmentTree, 2 * curr + 1,   start, mid);
+    buildSegmentTree(arr, segmentTree, 2 * curr + 2, mid + 1, end);
+    segmentTree[curr] = segmentTree[2 * curr + 1] + segmentTree[2 * curr + 2];
 }
 
 ll segmentQuery(vector<int>& segmentTree, ll curr, ll start, ll end, ll rangeStart, ll rangeEnd) {
@@ -101,8 +101,8 @@ ll segmentQuery(vector<int>& segmentTree, ll curr, ll start, ll end, ll rangeSta
 
     // partial overlap
     ll mid = (start + end)/2;
-    ll leftMin  = segmentQuery(segmentTree,     2 * curr,   start, mid, rangeStart, rangeEnd);
-    ll rightMin = segmentQuery(segmentTree, 2 * curr + 1, mid + 1, end, rangeStart, rangeEnd);
+    ll leftMin  = segmentQuery(segmentTree, 2 * curr + 1,   start, mid, rangeStart, rangeEnd);
+    ll rightMin = segmentQuery(segmentTree, 2 * curr + 2, mid + 1, end, rangeStart, rangeEnd);
     
     return min(leftMin, rightMin);
 
@@ -116,8 +116,8 @@ void update(vector<int>& segmentTree, ll curr, ll start, ll end, ll index, ll ne
     }
 
     ll mid = (start + end)/2;
-    if(index<=mid) update(segmentTree,     2 * curr,   start, mid, index, newValue);
-    else           update(segmentTree, 2 * curr + 1, mid + 1, end, index, newValue);
+    if(index<=mid) update(segmentTree, 2 * curr + 1,   start, mid, index, newValue);
+    else           update(segmentTree, 2 * curr + 2, mid + 1, end, index, newValue);
  
 }
 

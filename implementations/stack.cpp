@@ -102,6 +102,8 @@ int main() {
 }
 
 /**
+ * All operations are O(1) time 
+ * 
  * topPtr is always pointing to the last added node
  * thus for pop operations just push topPtr to next pointer
  * 

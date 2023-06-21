@@ -89,3 +89,15 @@ int main() {
 
     return 0;
 }
+
+/**
+ * push_back(val): O(n)
+ * Because length is increase by 1 and new space 
+ * of size n+1 is dynamically allocated
+ * 
+ * pop_back():     O(1)
+ * Because only length is decremented by 1
+ * 
+ * size():         O(1)
+ * Value of member variable is returned
+*/
