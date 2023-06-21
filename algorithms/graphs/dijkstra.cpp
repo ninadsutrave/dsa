@@ -13,7 +13,7 @@ vector<int> dijkstras(vector<pair<int,int>> adj[], int V, int src) {
     vector<int> dist(V, INT_MAX);
 
     dist[src] = 0;
-    pq.push(make_pair(0, src));
+    pq.push(make_pair(dist[src], src));
 
     while(pq.size()) {
 
@@ -21,7 +21,7 @@ vector<int> dijkstras(vector<pair<int,int>> adj[], int V, int src) {
         pq.pop();
 
         for(pair<int,int> node: adj[curr]) {
-            // weight of path from src to node -> node.second
+            // node->second - weight of path from src to node
             if(dist[curr]+node.second < dist[node.first]) {
                 dist[node.first] = dist[curr]+node.second;
                 pq.push(make_pair(dist[node.first], node.first));

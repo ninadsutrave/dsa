@@ -1,5 +1,8 @@
 /* https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article */
-/* first thoroughly understand inversions1 */
+/* first thoroughly understand inversions1 
+ * given an array, find number of pairs of elements
+ * such that A[i] > A[j] where i<j
+*/
 
 #include <iostream>
 #include <vector>
