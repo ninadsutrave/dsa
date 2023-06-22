@@ -73,8 +73,19 @@ int main() {
 }
 
 /**
- * A data structure to efficiently count connected
- * components in a graph
+ * Disjoint-Set data structure, also termed as the union-find data structure is a 
+ * data structure which keeps track of elements partitioned in non overlapping subsets 
+ * Major applications:
+ * Counting connected components in a graph/matrix
+ * Cycle detection in a graph as in Kruskal's algorithm
+ * 
+ * We use two very important optimisations in our implementation - 
+ *  Union by Rank      (maintaining rank matrix and strategically merging the trees)
+ *  Path Compression   (updating the parent of node after one query)
+ * 
+ * DSU with union by size / rank, but without path compression works in  O(log n) time per query
+ * Also, in our case a single call might take  O(log n) in the worst case, but if we do m 
+ * such calls back to back we will end up with an average time of O(α(n)) 
  * 
  * find():    
  * Amortised time complexity - O(α(n))
