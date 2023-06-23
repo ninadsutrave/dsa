@@ -1,1 +1,0 @@
-/* for finding kth largest element */
