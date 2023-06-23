@@ -78,5 +78,5 @@ int main() {
  * So consider all these cases, and maintain the maximum of these three
  * 
  * Time Complexity: O(n)
- * Space Complexity O(h) h-> height of the tree
+ * Space Complexity O(h) h -> height of the tree
 */

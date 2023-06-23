@@ -22,14 +22,14 @@ struct BinaryTreeNode {
 // returns the following pair for every node x
 // (max sum if x was picked, max sum if x wasn't picked)
 
-pair<int,int> helper(BinaryTreeNode* node) {
+pair<int,int> getExclusiveAndInclusiveValues(BinaryTreeNode* node) {
 
     if(!node) {
         return make_pair(0, 0);
     }
 
-    pair<int,int> leftChildSum = helper(node->left);
-    pair<int,int> rightChildSum = helper(node->right);
+    pair<int,int> leftChildSum = getExclusiveAndInclusiveValues(node->left);
+    pair<int,int> rightChildSum = getExclusiveAndInclusiveValues(node->right);
 
     int excludeNode = max(leftChildSum.first, leftChildSum.second) + max(rightChildSum.first, rightChildSum.second);
     int includeNode = node->val + leftChildSum.second + rightChildSum.second;
@@ -37,16 +37,25 @@ pair<int,int> helper(BinaryTreeNode* node) {
     return make_pair(includeNode, excludeNode);
 }
 
-int rob(BinaryTreeNode* root) {
+int maxValueRobbed(BinaryTreeNode* root) {
 
     pair<int,int> result;
-    result = helper(root);
+    result = getExclusiveAndInclusiveValues(root);
     return max(result.first, result.second);
 
 }
 
 int main() {
 
+    BinaryTreeNode* root = new BinaryTreeNode(5);
+    root->left = new BinaryTreeNode(20);
+    root->right = new BinaryTreeNode(9);
+    root->left->left = new BinaryTreeNode(15);
+    root->left->right = new BinaryTreeNode(7);
+    root->left->left->right = new BinaryTreeNode(8);
+
+    cout<<maxValueRobbed(root)<<"\n";
+    return 0;
 }
 
 /**
