@@ -100,4 +100,8 @@ int main() {
  *     find if it is possible to complete all tasks/courses
  *     (this can be done by checking if resulting graph is a DAG)
  *     The order in which they need to be executed is the topological sort
+ * 
+ *  2. Used in data serialisation
+ *  3. Used to determine the order of compilation tasks to perform in makefiles
+ *  4. Used to resolve symbol dependencies in linkers
 */

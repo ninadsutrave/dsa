@@ -1,3 +1,5 @@
+/* Cycle detection in undirected graph */
+
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -63,4 +65,11 @@ int main() {
  * is not its predecessor, but still is visited, it signifies a loop
  * 
  * So we will perform dfs and if this condition occurs we return true
+ * 
+ * Applications:
+ * • Used in distributed message-based algorithms
+ * • Used to process large-scale graphs using a distributed processing system on a cluster
+ * • Used to detect deadlocks in concurrent systems
+ * • Used in cryptographic applications to determine keys of a message that can map that message to the same encrypted value
+ * 
 */

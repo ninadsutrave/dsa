@@ -62,7 +62,7 @@ int main() {
 }
 
 /**
- * Time complexity: O(V^V)
+ * Time complexity: 
  * For dense graphs it is a time comsuming operation
  * 
  * Space complexity: O(V)

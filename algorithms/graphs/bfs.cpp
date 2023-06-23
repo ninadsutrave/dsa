@@ -54,4 +54,10 @@ int main() {
 /**
  * Time complexity: O(V+E)
  * Space complexity: O(V)
+ * 
+ * Applications
+ * • Used to determine the shortest paths and minimum spanning trees
+ * • Used by search engine crawlers to build indexes of web pages
+ * • Used to search on social networks
+ * • Used to find available neighbour nodes in peer-to-peer networks such as BitTorrent
 */

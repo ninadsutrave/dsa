@@ -41,6 +41,12 @@ int main() {
 }
 
 /**
+ * Applications:
+ * • Used to find a path between two vertices
+ * • Used to detect cycles in a graph
+ * • Used in topological sorting
+ * • Used to solve puzzles having only one solution (e.g., mazes)
+ * 
  * Time complexity: O(V+E)
  * Space complexity: O(V)
 */
