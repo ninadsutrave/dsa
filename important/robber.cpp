@@ -61,7 +61,7 @@ int main() {
 /**
  * 
  * Identify the subproblem. Max sum value in the entire tree,
- * is max value in left subtree + max value in right subtree
+ * is max value in left subtree + max value in right subtree + the root value(maybe)
  * subject to the given conditions. So apply these conditions
  * in a recursive fashion.
  * 
