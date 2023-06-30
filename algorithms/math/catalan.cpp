@@ -72,4 +72,13 @@ int main() {
  *                                    /\
  *                /\   /\     /\/\   / \
  *     /\/\/\  /\/ \  / \/\  /   \  /  \
+ * 
+ * Check more applicatios: https://en.wikipedia.org/wiki/Catalan_number
+ * 
+ * The n'th Catalan number has the tight upper bound:
+ * Cn ~ 4^n/n^(3/2)
+ * 
+ * So in problems invovling Catalan number of results, we can often 
+ * approximate the time complexity as O(4^n/n^(3/2))
+ * 
 */

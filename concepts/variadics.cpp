@@ -86,4 +86,12 @@ int main() {
  * Here I have implemented a printf function which demonstrates how the 
  * printf function actually formats the text given as the first argument
  * 
+ * There also exist variadic templates, which are used for implementations
+ * such as the tuple class 
+ * (which takes in multiple elments of varied types)
+ *
+ * template<typename... Args>
+ *
+ * (Check tuple.cpp in implementations)
+ * 
 */

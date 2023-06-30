@@ -1,10 +1,10 @@
 #include <iostream>
 using namespace std;
 
-template<typename... Ts>
+template<typename... Types>
 class Tuple {
     public:
-        Tuple(const Ts&... values) : elements(values...) {}
+        Tuple(const Types&... values) : elements(values...) {}
 
         template<size_t Index>
         auto get() const {
@@ -12,7 +12,16 @@ class Tuple {
         }
 
     private:
-        tuple<Ts...> elements;
+        tuple<Types...> elements;
+
+        template<size_t Index, typename Tuple>
+        auto get(const Tuple& t) const {
+            if constexpr (Index >= tuple_size_v<Tuple>) {
+                throw out_of_range("Index out of range");
+            } else {
+                return get<Index>(t);
+            }
+        }
 };
 
 int main() {

@@ -93,6 +93,10 @@ int main() {
 }
 
 /**
+ * 
+ * Time Complexity: O(nlogn)
+ * Space Complexity: O(logn) max stack size
+ * 
  * Prereqs: 
  *  a. Find middle of linked list
  *  b. Merging two sorted lists
