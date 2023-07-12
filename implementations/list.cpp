@@ -1,17 +1,27 @@
+/*INCOMPLETE*/
+#include <iostream>
+#include <exception>
+using namespace std;
+
 template <typename T>
 class List {
 
     private: 
-    struct ListNode {
-        T data;
-        ListNode* next;
-        ListNode (const T& data) {
-            this->data = data;
+    struct DoublyLinkedListNode {
+        T val;
+        DoublyLinkedListNode* next;
+        DoublyLinkedListNode* prev;        
+
+        DoublyLinkedListNode (const T& data) {
+            val = data;
             next = nullptr;
+            prev = nullptr;
         }
     };
-    ListNode* headNode;
-    ListNode* tailNode;
+
+    DoublyLinkedListNode* headNode;
+    DoublyLinkedListNode* tailNode;
+    size_t currentSize;
 
     public:
     List() {
@@ -19,8 +29,19 @@ class List {
     }
 
     ~List() {
-        while(size()) {
-            remove
+        while(currentSize()) {
+            pop_back();
+        }
+    }
+
+    void push_back(const T& val) {
+
+        DoublyLinkedListNode* node = new DoublyLinkedListNode(val);
+
+        if(headNode == nullptr) {
+            headNode = tailNode = node;
+        } else {
+            
         }
     }
 

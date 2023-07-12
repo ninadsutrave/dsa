@@ -22,25 +22,26 @@ struct BinaryTreeNode {
 // returns the following pair for every node x
 // (max sum if x was picked, max sum if x wasn't picked)
 
-pair<int,int> getExclusiveAndInclusiveValues(BinaryTreeNode* node) {
+pair<int,int> getInclusiveAndExclusiveValues(BinaryTreeNode* node) {
 
     if(!node) {
         return make_pair(0, 0);
     }
 
-    pair<int,int> leftChildSum = getExclusiveAndInclusiveValues(node->left);
-    pair<int,int> rightChildSum = getExclusiveAndInclusiveValues(node->right);
+    pair<int,int> leftChildSum = getInclusiveAndExclusiveValues(node->left);
+    pair<int,int> rightChildSum = getInclusiveAndExclusiveValues(node->right);
 
-    int excludeNode = max(leftChildSum.first, leftChildSum.second) + max(rightChildSum.first, rightChildSum.second);
     int includeNode = node->val + leftChildSum.second + rightChildSum.second;
+    int excludeNode = max(leftChildSum.first, leftChildSum.second) + max(rightChildSum.first, rightChildSum.second);
 
     return make_pair(includeNode, excludeNode);
+    
 }
 
 int maxValueRobbed(BinaryTreeNode* root) {
 
     pair<int,int> result;
-    result = getExclusiveAndInclusiveValues(root);
+    result = getInclusiveAndExclusiveValues(root);
     return max(result.first, result.second);
 
 }
