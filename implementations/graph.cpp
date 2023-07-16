@@ -106,6 +106,8 @@ class Graph {
     vector<int> getShortestPath(int src, int dest) {
 
         vector<int> shortestPath;
+        shortestPathHelper(src, dest, shortestPath);
+        return shortestPath;
 
     }
 };

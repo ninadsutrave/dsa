@@ -1,6 +1,7 @@
 #include <vector>
 #include <queue>
 #include <algorithm>
+#include <iostream>
 using namespace std;
 
 void addEdge(vector <pair<int, int>> adj[], int u, int v, int wt) {
@@ -32,8 +33,8 @@ vector<int> dijkstras(vector<pair<int,int>> adj[], int V, int src) {
     return dist;
 }
 
-int main()
-{
+int main() {
+
     int V = 5;
     vector<pair<int, int> > adj[V];
     addEdge(adj, 0, 1, 10);
@@ -43,6 +44,11 @@ int main()
     addEdge(adj, 1, 4, 50);
     addEdge(adj, 2, 3, 60);
     addEdge(adj, 3, 4, 70);
+
+    vector<int> dist = dijkstras(adj,4,0);
+    cout<<dist[1]<<"\n";
+    cout<<dist[2]<<"\n";
+    cout<<dist[3]<<"\n";
 
     return 0;
 }
