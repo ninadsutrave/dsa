@@ -1,3 +1,4 @@
+// implement dot product and cross product
 #include <iostream>
 
 using namespace std;
@@ -10,6 +11,10 @@ class Vector {
     T zComponent;
 
     public:
+    Vector() {
+        xComponent = yComponent = zComponent = 0;
+    }
+
     Vector(T xComponent, T yComponent, T zComponent) {
         this->xComponent = xComponent;
         this->yComponent = yComponent;
@@ -40,48 +45,53 @@ class Vector {
 
     Vector getUnitVector() {
 
+        Vector unitVector;
         T magnitude = getMagnitude();
-        Vector unitVector(xComponent/magnitude, 
-                          yComponent/magnitude, 
-                          zComponent/magnitude);
+
+        unitVector.xComponent = xComponent/magnitude;
+        unitVector.yComponent = yComponent/magnitude;
+        unitVector.zComponent = zComponent/magnitude; 
+
         return unitVector;       
 
     }
 
     Vector operator+(Vector v) {
 
-        Vector resultant(xComponent + v.xComponent, 
-                         yComponent + v.yComponent,
-                         zComponent + v.zComponent);
+        Vector resultant;
+        resultant.xComponent = xComponent + v.xComponent;
+        resultant.yComponent = yComponent + v.yComponent;
+        resultant.zComponent = zComponent + v.zComponent;
         return resultant;
 
     }
 
     Vector operator-(Vector v) {
 
-        Vector resultant(xComponent - v.xComponent, 
-                         yComponent - v.yComponent,
-                         zComponent - v.zComponent);
+        Vector resultant;
+        resultant.xComponent = xComponent - v.xComponent;
+        resultant.yComponent = yComponent - v.yComponent;
+        resultant.zComponent = zComponent - v.zComponent;
         return resultant;
 
     }
 
     Vector operator*(T value) {
 
-        Vector resultant(xComponent * value, 
-                         yComponent * value,
-                         zComponent * value);
+        Vector resultant;
+        resultant.xComponent = xComponent * value;
+        resultant.yComponent = yComponent * value;
+        resultant.zComponent = zComponent * value;
         return resultant;
 
     }
 
     Vector operator*(Vector v) {
 
-        T a = (yComponent * v.getZ() - zComponent * v.getY());
-        T b = (zComponent * v.getX() - xComponent * v.getZ());
-        T c = (xComponent * v.getY() - yComponent * v.getX());
-
-        Vector vectorProduct(a, b, c);
+        Vector vectorProduct;
+        vectorProduct.xComponent = (yComponent * v.zComponent - zComponent * v.yComponent);
+        vectorProduct.yComponent = (zComponent * v.xComponent - xComponent * v.zComponent);
+        vectorProduct.zComponent = (xComponent * v.yComponent - yComponent * v.xComponent);
         return vectorProduct;
 
     }
@@ -89,7 +99,7 @@ class Vector {
     T operator,(Vector v) {
 
         T scalarProduct;
-        scalarProduct =  xComponent * v.getX() +  yComponent * v.getY() + zComponent * v.getZ();
+        scalarProduct =  xComponent * v.xComponent +  yComponent * v.yComponent + zComponent * v.zComponent;
         return scalarProduct;
 
     }
@@ -114,6 +124,7 @@ int main() {
     cout<<"v5: "<<v5.getX()<<" "<<v5.getY()<<" "<<v5.getZ()<<"\n";
     cout<<"v6: "<<v6.getX()<<" "<<v6.getY()<<" "<<v6.getZ()<<"\n";
     cout<<"v7: "<<v7;
+
     return 0;
 
 }
