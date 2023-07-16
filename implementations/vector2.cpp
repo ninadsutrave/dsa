@@ -1,4 +1,3 @@
-// implement dot product and cross product
 #include <iostream>
 
 using namespace std;
