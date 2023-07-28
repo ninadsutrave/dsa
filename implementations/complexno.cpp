@@ -114,6 +114,10 @@ class Complex {
         return conjugate;
     }
 
+    bool operator==(Complex c) {
+        return (real == c.real && imaginary == c.imaginary);
+    }
+
     double arg() {
         return atan2(imaginary, real);
     }
@@ -142,6 +146,9 @@ int main() {
     cout<<"c7: "<<c7.getReal()<<" "<<c7.getImaginary()<<"\n";
     cout<<"c8: "<<c8.getReal()<<" "<<c8.getImaginary()<<"\n";
     cout<<arg<<"\n";
+
+    Complex c9(4.0, 5.0);
+    cout<<(c2 == c9)<<"\n";
 
     return 0;
 

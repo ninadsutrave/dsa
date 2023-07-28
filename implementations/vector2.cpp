@@ -76,6 +76,7 @@ class Vector {
 
     }
 
+    // scalar multiplication
     Vector operator*(T value) {
 
         Vector resultant;
@@ -86,6 +87,7 @@ class Vector {
 
     }
 
+    // cross porduct
     Vector operator*(Vector v) {
 
         Vector vectorProduct;
@@ -96,11 +98,18 @@ class Vector {
 
     }
 
+    // dot product
     T operator,(Vector v) {
 
         T scalarProduct;
         scalarProduct =  xComponent * v.xComponent +  yComponent * v.yComponent + zComponent * v.zComponent;
         return scalarProduct;
+
+    }
+
+    bool operator==(Vector v) {
+
+        return (xComponent == v.xComponent && yComponent == v.yComponent && zComponent == v.zComponent);
 
     }
 
@@ -123,7 +132,10 @@ int main() {
     cout<<"v4: "<<v4.getX()<<" "<<v4.getY()<<" "<<v4.getZ()<<"\n";
     cout<<"v5: "<<v5.getX()<<" "<<v5.getY()<<" "<<v5.getZ()<<"\n";
     cout<<"v6: "<<v6.getX()<<" "<<v6.getY()<<" "<<v6.getZ()<<"\n";
-    cout<<"v7: "<<v7;
+    cout<<"v7: "<<v7<<"\n";
+
+    Vector v8(4.0, 5.0, 6.0);
+    cout<<(v2 == v8)<<"\n";
 
     return 0;
 
