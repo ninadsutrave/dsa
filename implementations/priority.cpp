@@ -1,4 +1,110 @@
+#include <vector>
+#include <exception>
+#include <iostream>
+using namespace std;
 
+template <typename T>
+class PriorityQueue {
+
+    private:
+    vector<T> elements;
+    size_t currentSize;
+
+    public: 
+    PriorityQueue() {
+        currentSize = 0;
+    }
+
+    ~PriorityQueue() {
+
+    }
+
+    void push(T value) {
+
+        elements.push_back(value);
+        int index = currentSize;
+        ++currentSize;
+
+        while(index) {
+            int parentIndex = (index-1)/2;  // Parent of i-th node: (i-1)/2
+
+            if(elements[index]<elements[parentIndex]) return;
+
+            swap(elements[index], elements[parentIndex]);
+            index = parentIndex;
+        }
+
+    }
+
+    void pop() {
+
+        if(currentSize == 0) {
+            throw out_of_range("Priority Queue is empty");
+        } 
+
+        int index = 0;
+        elements[index] = elements[currentSize-1];
+        elements.pop_back();
+        --currentSize;
+
+        while(true) {
+
+            int leftChildIndex = 2*index + 1;    // Left child of i-th node :  2i + 1
+            int rightChildIndex = 2*index + 2;   // Right child of i-th node :  2i + 2
+            int largestIndex = index;
+
+            if (leftChildIndex<currentSize && elements[leftChildIndex] > elements[largestIndex]) {
+                largestIndex = leftChildIndex;
+            }
+            if (rightChildIndex<currentSize && elements[rightChildIndex] > elements[largestIndex]) {
+                largestIndex = rightChildIndex;
+            }
+            if (largestIndex == index) {
+                break;
+            }
+
+            swap(elements[index], elements[largestIndex]);
+            index = largestIndex;
+
+        }
+
+    }
+
+    T top() {
+        return elements[0];
+    }
+
+    bool empty() {
+        return (currentSize == 0);
+    }
+
+    size_t size() {
+        return currentSize;
+    }
+ 
+};
+
+int main() {
+
+    PriorityQueue<int> pq;
+    pq.push(5);
+    pq.push(9);
+    pq.push(17);
+    pq.push(4);
+    pq.push(7);
+    pq.push(3);
+    pq.push(13);
+    pq.push(7);
+
+    while(pq.size()) {
+        cout<<pq.top()<<"\n";
+        pq.pop();
+    }
+
+    pq.pop();
+
+    return 0;
+}
 
 /**
  * 

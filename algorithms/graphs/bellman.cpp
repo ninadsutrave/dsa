@@ -51,6 +51,8 @@ int main() {
  * Bellman Ford is a dynamic programming based approach whereas 
  * Dijkstras is a greedy approach
  * 
+ * The ith iteration guarantees to give all shortest paths which are at most i edges long
+ * 
  * Applications:
  * • Used to find directions to travel from one location to another in mapping 
  *   software like Google maps or Apple maps

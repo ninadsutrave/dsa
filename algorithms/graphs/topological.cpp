@@ -95,6 +95,11 @@ int main() {
  * 
  * There can be multiple valid topological sorts.
  * 
+ * Intuition: 
+ * It is basically a post order DFS algorithm. Once we reach a node,
+ * we do not add it right away. Instead we first reach its children,
+ * and add it at the last.
+ * 
  * Applications:
  *  1. Given a list of tasks/courses, and their pre requisite tasks/courses
  *     find if it is possible to complete all tasks/courses
